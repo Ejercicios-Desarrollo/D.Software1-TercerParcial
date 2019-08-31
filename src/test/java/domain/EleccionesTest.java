@@ -62,6 +62,7 @@ public class EleccionesTest {
         listasTest.add(cien);
         listasTest.add(veinte);
         listasTest.add(quince);
+
         Assert.assertArrayEquals(listasTest.toArray(), eleccion2019.getListas().toArray());
         Assert.assertEquals(3, eleccion2019.getCantidadListas());
     }

@@ -1,12 +1,6 @@
 package domain;
 
-public abstract class Estado {
+public  interface Estado {
 
-    public Estado(){
-
-    }
-
-    public void presentarListaAEleccion(Eleccion eleccion, Lista lista){
-
-    }
+    public void presentarListaAEleccion(Eleccion eleccion, Lista lista);
 }

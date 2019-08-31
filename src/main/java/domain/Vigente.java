@@ -1,6 +1,6 @@
 package domain;
 
-public class Vigente extends Estado {
+public class Vigente implements Estado {
 
     public Vigente() {
 

@@ -21,4 +21,8 @@ public class Eleccion {
     public List<Lista> getListas(){
         return listas;
     }
+
+    public void sumarVotoPorNumeroLista(Postulante postulante){
+        this.listas.stream().filter(lista -> lista.getNumero() == postulante.getNumeroLista()).forEach(l -> l.sumarVotoPorCargo(postulante));
+    }
 }

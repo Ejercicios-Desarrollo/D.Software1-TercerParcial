@@ -2,6 +2,7 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Lista {
     private int numero;
@@ -11,8 +12,16 @@ public class Lista {
 
     public Lista(int numero, String nombre){
         this.numero = numero;
-        this .nombre = nombre;
+        this.nombre = nombre;
         this.postulantes = new ArrayList<>();
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public List<Postulante> getPostulantes() {
+        return postulantes;
     }
 
     public void agregarPostulante(Postulante postulante){
@@ -28,6 +37,20 @@ public class Lista {
     }
 
     public PartidoPolitico getPartidoPolitico() {
-        return partidoPolitico;
+        return this.partidoPolitico;
     }
+
+    public void sumarVotosListaEntera(){
+        this.postulantes.stream().forEach(p -> p.sumarVoto());
+    }
+
+    public void sumarVotoPorCargo(Postulante postulante){
+        this.postulantes.stream().filter(p -> p.getCargo() == postulante.getCargo()).forEach(p -> p.sumarVoto());
+    }
+
+
+
+
+
+
 }

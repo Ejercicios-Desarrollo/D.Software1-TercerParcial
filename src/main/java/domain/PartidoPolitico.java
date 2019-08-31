@@ -29,11 +29,4 @@ public class PartidoPolitico {
     public void recuperarVigencia(){
         this.estado = new Vigente();
     }
-
-    public Estado getEstado(){
-        return this.estado;
-    }
-
-
-
 }

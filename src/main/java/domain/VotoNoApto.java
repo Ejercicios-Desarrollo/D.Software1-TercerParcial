@@ -9,6 +9,11 @@ public class VotoNoApto implements EstadoVoto {
     }
 
     @Override
+    public boolean yaVoto(){
+        return false;
+    }
+
+    @Override
     public void chequearEdad(Persona persona) {
 
     }

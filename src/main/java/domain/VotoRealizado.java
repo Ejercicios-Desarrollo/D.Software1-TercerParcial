@@ -9,6 +9,11 @@ public class VotoRealizado implements EstadoVoto {
     }
 
     @Override
+    public boolean yaVoto(){
+        return true;
+    }
+
+    @Override
     public void chequearEdad(Persona persona){
 
     }

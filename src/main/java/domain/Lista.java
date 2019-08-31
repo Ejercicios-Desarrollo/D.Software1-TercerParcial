@@ -44,8 +44,20 @@ public class Lista {
         this.postulantes.stream().forEach(p -> p.sumarVoto());
     }
 
+    public int getVotosLista(){
+        return this.postulantes.stream().mapToInt(p -> p.getVotos()).sum();
+    }
+
     public void sumarVotoPorCargo(Postulante postulante){
-        this.postulantes.stream().filter(p -> p.getCargo() == postulante.getCargo()).forEach(p -> p.sumarVoto());
+        this.postulantes.stream()
+                .filter(p -> p.getCargo() == postulante.getCargo())
+                .forEach(p -> p.sumarVoto());
+    }
+
+    public int getVotosPorCargo(Postulante postulante){
+        return this.postulantes.stream()
+                .filter(p -> p.getCargo() == postulante.getCargo())
+                .mapToInt(p -> p.getVotos()).sum();
     }
 
 

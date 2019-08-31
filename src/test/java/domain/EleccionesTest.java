@@ -18,6 +18,10 @@ public class EleccionesTest {
     private Lista veinte;
     private Lista quince;
     private Lista sesenta;
+    private Postulante mMacri;
+    private Postulante mVidal;
+    private Postulante aFernandez;
+    private Postulante aKicillof;
 
     @Before
     public void init(){
@@ -30,19 +34,19 @@ public class EleccionesTest {
         this.veinte = new Lista(20, "Todos");
         this.quince = new Lista(15, "Izquierda");
         this.sesenta = new Lista(60, "Despertar");
-
+        this.mMacri = new Postulante();
+        this.mVidal = new Postulante();
+        this.aFernandez = new Postulante();
+        this.aKicillof = new Postulante();
     }
+
 
     @Test
     public void postularseAListaTest(){
-        Postulante mMacri = new Postulante();
-        mMacri.postularseA(Cargo.PRESIDENTE, this.cien);
-        Postulante mVidal = new Postulante();
-        mVidal.postularseA(Cargo.GOBERNADOR, cien);
-        Postulante aFernandez = new Postulante();
-        aFernandez.postularseA(Cargo.PRESIDENTE, veinte);
-        Postulante aKicillof = new Postulante();
-        aKicillof.postularseA(Cargo.GOBERNADOR, veinte);
+        this.mMacri.postularseA(Cargo.PRESIDENTE, cien);
+        this.mVidal.postularseA(Cargo.GOBERNADOR, cien);
+        this.aFernandez.postularseA(Cargo.PRESIDENTE, veinte);
+        this.aKicillof.postularseA(Cargo.GOBERNADOR, veinte);
 
         Assert.assertEquals(2, cien.getCantidadPostulantes());
         Assert.assertEquals(2, veinte.getCantidadPostulantes());
@@ -65,5 +69,41 @@ public class EleccionesTest {
 
         Assert.assertArrayEquals(listasTest.toArray(), eleccion2019.getListas().toArray());
         Assert.assertEquals(3, eleccion2019.getCantidadListas());
+    }
+
+    @Test
+    public void personasVotanTest(){
+        this.mMacri.postularseA(Cargo.PRESIDENTE, cien);
+        this.mVidal.postularseA(Cargo.GOBERNADOR, cien);
+        this.aFernandez.postularseA(Cargo.PRESIDENTE, veinte);
+        this.aKicillof.postularseA(Cargo.GOBERNADOR, veinte);
+        this.juntosPorElCambio.recuperarVigencia();
+        this.juntosPorElCambio.presentarListaAEleccion(eleccion2019, cien);
+        this.frenteDeTodos.recuperarVigencia();
+        this.frenteDeTodos.presentarListaAEleccion(eleccion2019, veinte);
+        this.frenteDeIzquierda.recuperarVigencia();
+
+        Persona persona1 = new Persona(16);
+        Assert.assertEquals(false, persona1.votaste());
+        persona1.emitirVoto(veinte, eleccion2019);
+        Assert.assertEquals(true, persona1.votaste());
+
+        Persona persona2 = new Persona(15);
+        persona2.emitirVoto(veinte, eleccion2019);
+        Assert.assertEquals(false, persona2.votaste());
+
+        Persona persona3 = new Persona(20);
+        persona3.emitirVoto(cien, eleccion2019);
+        persona3.emitirVoto(cien, eleccion2019);
+
+        Persona persona4 = new Persona(21);
+        List<Postulante> listaTest = new ArrayList<>();
+        listaTest.add(mMacri);
+        listaTest.add(aKicillof);
+        persona4.emitirVoto(listaTest, eleccion2019);
+
+        Assert.assertEquals(3, veinte.getVotosLista());
+        Assert.assertEquals(3, cien.getVotosLista());
+        Assert.assertEquals(6, eleccion2019.getVotosTotales());
     }
 }

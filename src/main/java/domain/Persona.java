@@ -15,6 +15,10 @@ public class Persona {
         return edad;
     }
 
+    public boolean votaste(){
+        return this.estadoVoto.yaVoto();
+    }
+
     public void setEstadoVoto(EstadoVoto estadoVoto) {
         this.estadoVoto = estadoVoto;
     }
@@ -28,7 +32,4 @@ public class Persona {
         this.estadoVoto.chequearEdad(this);
         this.estadoVoto.votarCortandoBoleta(postulantes, eleccion, this);
     }
-
-
-
 }

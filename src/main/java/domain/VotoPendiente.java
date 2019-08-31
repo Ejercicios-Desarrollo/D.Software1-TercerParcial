@@ -2,6 +2,7 @@ package domain;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class VotoPendiente implements EstadoVoto {
 
@@ -10,11 +11,15 @@ public class VotoPendiente implements EstadoVoto {
     }
 
     @Override
+    public boolean yaVoto(){
+        return false;
+    }
+
+    @Override
     public void chequearEdad(Persona persona){
-        if(persona.getEdad() >= 16){
-            persona.setEstadoVoto(new VotoPendiente());
+        if(persona.getEdad() < 16){
+            persona.setEstadoVoto(new VotoNoApto());
         }
-        else persona.setEstadoVoto(new VotoNoApto());
     }
 
     @Override

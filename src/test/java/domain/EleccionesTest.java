@@ -22,6 +22,7 @@ public class EleccionesTest {
     private Postulante mVidal;
     private Postulante aFernandez;
     private Postulante aKicillof;
+    private Alianza cambioDespertar;
 
     @Before
     public void init(){
@@ -105,5 +106,10 @@ public class EleccionesTest {
         Assert.assertEquals(3, veinte.getVotosLista());
         Assert.assertEquals(3, cien.getVotosLista());
         Assert.assertEquals(6, eleccion2019.getVotosTotales());
+    }
+
+    @Test
+    public void entidadesPoliticasTest(){
+
     }
 }

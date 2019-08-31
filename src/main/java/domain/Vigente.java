@@ -7,7 +7,8 @@ public class Vigente implements Estado {
     }
 
     @Override
-    public void presentarListaAEleccion(Eleccion eleccion, Lista lista){
+    public void presentarListaAEleccion(Eleccion eleccion, Lista lista, EntidadPolitica entidadPolitica){
         eleccion.presentarLista(lista);
+        entidadPolitica.setEstado(new ListaPresentada());
     }
 }

@@ -1,5 +1,7 @@
 package domain;
 
+import java.util.List;
+
 public abstract class EntidadPolitica {
     private String nombre;
     private Estado estado;
@@ -15,10 +17,18 @@ public abstract class EntidadPolitica {
 
     public void presentarListaAEleccion(Eleccion eleccion, Lista lista){
         lista.setEntidadPolitica(this);
-        this.estado.presentarListaAEleccion(eleccion, lista);
+        this.estado.presentarListaAEleccion(eleccion, lista, this);
     }
 
     public void recuperarVigencia(){
         this.estado = new Vigente();
+    }
+
+    public void setEstado(Estado estado){
+        this.estado = estado;
+    }
+
+    public void getCantidadVotos(Eleccion eleccion){
+        eleccion.getVotosPorEntidadPolitica(this);
     }
 }

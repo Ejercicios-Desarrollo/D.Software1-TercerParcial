@@ -1,8 +1,7 @@
 package domain;
 
-public class NoVigente implements Estado{
-
-    public NoVigente(){
+public class ListaPresentada implements Estado {
+    public ListaPresentada() {
 
     }
 

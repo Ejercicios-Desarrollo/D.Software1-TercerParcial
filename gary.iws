@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6da99445-8995-4ef2-a294-fced9d7177eb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/Cargo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/Eleccion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/Estado.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/Lista.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/NoVigente.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/PartidoPolitico.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/Postulante.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/domain/Vigente.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/domain/EleccionesTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gary.iws" beforeDir="false" afterPath="$PROJECT_DIR$/gary.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/EleccionesTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/EleccionesTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

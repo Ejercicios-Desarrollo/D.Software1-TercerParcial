@@ -1,5 +1,6 @@
 package domain;
 
+import javafx.geometry.Pos;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,6 +34,21 @@ public class EleccionesTest {
     }
 
     @Test
+    public void postularseAListaTest(){
+        Postulante mMacri = new Postulante();
+        mMacri.postularseA(Cargo.PRESIDENTE, this.cien);
+        Postulante mVidal = new Postulante();
+        mVidal.postularseA(Cargo.GOBERNADOR, cien);
+        Postulante aFernandez = new Postulante();
+        aFernandez.postularseA(Cargo.PRESIDENTE, veinte);
+        Postulante aKicillof = new Postulante();
+        aKicillof.postularseA(Cargo.GOBERNADOR, veinte);
+
+        Assert.assertEquals(2, cien.getCantidadPostulantes());
+        Assert.assertEquals(2, veinte.getCantidadPostulantes());
+    }
+
+    @Test
     public void partidosPresentanListasTest(){
         this.juntosPorElCambio.recuperarVigencia();
         this.juntosPorElCambio.presentarListaAEleccion(eleccion2019, cien);
@@ -47,5 +63,6 @@ public class EleccionesTest {
         listasTest.add(veinte);
         listasTest.add(quince);
         Assert.assertArrayEquals(listasTest.toArray(), eleccion2019.getListas().toArray());
+        Assert.assertEquals(3, eleccion2019.getCantidadListas());
     }
 }

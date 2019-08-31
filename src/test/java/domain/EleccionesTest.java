@@ -10,8 +10,12 @@ import java.util.List;
 
 public class EleccionesTest {
     private Eleccion eleccion2019;
-    private PartidoPolitico juntosPorElCambio;
-    private PartidoPolitico frenteDeTodos;
+    private PartidoPolitico pro;
+    private PartidoPolitico ucr;
+    private PartidoPolitico unidadCiudadana;
+    private PartidoPolitico frenteRenovador;
+    private Alianza juntosPorElCambio;
+    private Alianza frenteDeTodos;
     private PartidoPolitico frenteDeIzquierda;
     private PartidoPolitico frenteDespertar;
     private Lista cien;
@@ -22,13 +26,17 @@ public class EleccionesTest {
     private Postulante mVidal;
     private Postulante aFernandez;
     private Postulante aKicillof;
-    private Alianza cambioDespertar;
+
 
     @Before
     public void init(){
         this.eleccion2019 = new Eleccion();
-        this.juntosPorElCambio = new PartidoPolitico("Juntos por el Cambio");
-        this.frenteDeTodos = new PartidoPolitico("Frente de Todos");
+        this.pro = new PartidoPolitico("Pro");
+        this.ucr = new PartidoPolitico("UCR");
+        this.unidadCiudadana = new PartidoPolitico("Unidad Ciudadana");
+        this.frenteRenovador = new PartidoPolitico("Frente Renovador");
+        this.juntosPorElCambio = new Alianza("Juntos por el Cambio");
+        this.frenteDeTodos = new Alianza("Frente de Todos");
         this.frenteDeIzquierda = new PartidoPolitico("Frente de Izquierda");
         this.frenteDespertar = new PartidoPolitico("Frente Despertar");
         this.cien = new Lista(100, "Cambio");
@@ -55,8 +63,12 @@ public class EleccionesTest {
 
     @Test
     public void partidosPresentanListasTest(){
+        this.juntosPorElCambio.agregarEntidadPolitica(pro);
+        this.juntosPorElCambio.agregarEntidadPolitica(ucr);
         this.juntosPorElCambio.recuperarVigencia();
         this.juntosPorElCambio.presentarListaAEleccion(eleccion2019, cien);
+        this.frenteDeTodos.agregarEntidadPolitica(unidadCiudadana);
+        this.frenteDeTodos.agregarEntidadPolitica(frenteRenovador);
         this.frenteDeTodos.recuperarVigencia();
         this.frenteDeTodos.presentarListaAEleccion(eleccion2019, veinte);
         this.frenteDeIzquierda.recuperarVigencia();
@@ -106,6 +118,10 @@ public class EleccionesTest {
         Assert.assertEquals(3, veinte.getVotosLista());
         Assert.assertEquals(3, cien.getVotosLista());
         Assert.assertEquals(6, eleccion2019.getVotosTotales());
+
+        Assert.assertEquals(3, juntosPorElCambio.getCantidadVotos(eleccion2019));
+        Assert.assertEquals(3, frenteDeTodos.getCantidadVotos(eleccion2019));
+        Assert.assertEquals(0, frenteDeIzquierda.getCantidadVotos(eleccion2019));
     }
 
     @Test

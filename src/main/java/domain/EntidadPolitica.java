@@ -28,7 +28,7 @@ public abstract class EntidadPolitica {
         this.estado = estado;
     }
 
-    public void getCantidadVotos(Eleccion eleccion){
-        eleccion.getVotosPorEntidadPolitica(this);
+    public int getCantidadVotos(Eleccion eleccion){
+        return eleccion.getVotosPorEntidadPolitica(this);
     }
 }

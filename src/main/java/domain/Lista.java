@@ -8,7 +8,7 @@ public class Lista {
     private int numero;
     private String nombre;
     private List<Postulante> postulantes;
-    private PartidoPolitico partidoPolitico;
+    private EntidadPolitica entidadPolitica;
 
     public Lista(int numero, String nombre){
         this.numero = numero;
@@ -32,12 +32,12 @@ public class Lista {
         return this.postulantes.size();
     }
 
-    public void setPartidoPolitico(PartidoPolitico partidoPolitico) {
-        this.partidoPolitico = partidoPolitico;
+    public void setEntidadPolitica(EntidadPolitica entidadPolitica) {
+        this.entidadPolitica = entidadPolitica;
     }
 
-    public PartidoPolitico getPartidoPolitico() {
-        return this.partidoPolitico;
+    public EntidadPolitica getEntidadPolitica() {
+        return this.entidadPolitica;
     }
 
     public void sumarVotosListaEntera(){

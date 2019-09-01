@@ -14,17 +14,12 @@ public class VotoRealizado implements EstadoVoto {
     }
 
     @Override
-    public void chequearEdad(Persona persona){
+    public void votarListaCompleta(Lista lista, Persona persona){
 
     }
 
     @Override
-    public void votarListaEntera(Lista lista, Persona persona){
-
-    }
-
-    @Override
-    public void votarCortandoBoleta(List<Postulante> postulantes, Eleccion eleccion, Persona persona){
+    public void votarCortandoBoletas(List<Postulante> postulantes, Eleccion eleccion, Persona persona){
 
     }
 }

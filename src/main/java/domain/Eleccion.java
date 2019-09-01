@@ -22,14 +22,16 @@ public class Eleccion {
         return listas;
     }
 
-    public void sumarVotoPorNumeroLista(Postulante postulante){
+    public void sumarVotoPorCandidato(Postulante postulante){
         this.listas.stream()
                 .filter(lista -> lista.getNumero() == postulante.getNumeroLista())
-                .forEach(l -> l.sumarVotoPorCargo(postulante));
+                .forEach(lista -> lista.sumarVotoPorCargo(postulante));
     }
 
     public int getVotosTotales(){
-        return this.listas.stream().mapToInt(lista -> lista.getVotosLista()).sum();
+        return this.listas.stream()
+                .mapToInt(lista -> lista.getVotosLista())
+                .sum();
     }
 
     public int getVotosPorEntidadPolitica(EntidadPolitica entidadPolitica){

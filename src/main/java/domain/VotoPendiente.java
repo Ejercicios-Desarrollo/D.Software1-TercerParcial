@@ -15,22 +15,25 @@ public class VotoPendiente implements EstadoVoto {
         return false;
     }
 
+    public boolean esAptoParaVotar(Persona persona){
+        return persona.getEdad() >= 16;
+    }
+
     @Override
-    public void chequearEdad(Persona persona){
-        if(persona.getEdad() < 16){
-            persona.setEstadoVoto(new VotoNoApto());
+    public void votarListaCompleta(Lista lista, Persona persona){
+        if(esAptoParaVotar(persona)){
+            lista.sumarVotosListaCompleta();
+            persona.setEstadoVoto(new VotoRealizado());
         }
+        else persona.setEstadoVoto(new VotoNoApto());
     }
 
     @Override
-    public void votarListaEntera(Lista lista, Persona persona){
-        lista.sumarVotosListaEntera();
-        persona.setEstadoVoto(new VotoRealizado());
-    }
-
-    @Override
-    public void votarCortandoBoleta(List<Postulante> postulantes, Eleccion eleccion, Persona persona){
-        postulantes.stream().forEach(postulante -> eleccion.sumarVotoPorNumeroLista(postulante));
-        persona.setEstadoVoto(new VotoRealizado());
+    public void votarCortandoBoletas(List<Postulante> postulantes, Eleccion eleccion, Persona persona){
+        if(esAptoParaVotar(persona)){
+            postulantes.stream().forEach(postulante -> eleccion.sumarVotoPorCandidato(postulante));
+            persona.setEstadoVoto(new VotoRealizado());
+        }
+        else persona.setEstadoVoto(new VotoNoApto());
     }
 }

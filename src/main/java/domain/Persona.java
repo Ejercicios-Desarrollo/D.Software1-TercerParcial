@@ -24,12 +24,10 @@ public class Persona {
     }
 
     public void emitirVoto(Lista lista, Eleccion eleccion){
-        this.estadoVoto.chequearEdad(this);
-        this.estadoVoto.votarListaEntera(lista, this);
+        this.estadoVoto.votarListaCompleta(lista, this);
     }
 
     public void emitirVoto(List<Postulante> postulantes, Eleccion eleccion){
-        this.estadoVoto.chequearEdad(this);
-        this.estadoVoto.votarCortandoBoleta(postulantes, eleccion, this);
+        this.estadoVoto.votarCortandoBoletas(postulantes, eleccion, this);
     }
 }

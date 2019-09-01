@@ -49,7 +49,7 @@ public class EleccionesTest {
         this.aKicillof = new Postulante();
     }
 
-
+    //Test primera iteracion
     @Test
     public void postularseAListaTest(){
         this.mMacri.postularseA(Cargo.PRESIDENTE, cien);
@@ -61,18 +61,22 @@ public class EleccionesTest {
         Assert.assertEquals(2, veinte.getCantidadPostulantes());
     }
 
+    //Test primera iteracion
     @Test
     public void partidosPresentanListasTest(){
         this.juntosPorElCambio.agregarEntidadPolitica(pro);
         this.juntosPorElCambio.agregarEntidadPolitica(ucr);
         this.juntosPorElCambio.recuperarVigencia();
         this.juntosPorElCambio.presentarListaAEleccion(eleccion2019, cien);
+
         this.frenteDeTodos.agregarEntidadPolitica(unidadCiudadana);
         this.frenteDeTodos.agregarEntidadPolitica(frenteRenovador);
         this.frenteDeTodos.recuperarVigencia();
         this.frenteDeTodos.presentarListaAEleccion(eleccion2019, veinte);
+
         this.frenteDeIzquierda.recuperarVigencia();
         this.frenteDeIzquierda.presentarListaAEleccion(eleccion2019, quince);
+
         this.frenteDespertar.presentarListaAEleccion(eleccion2019, sesenta);
 
         List<Lista> listasTest = new ArrayList<>();
@@ -82,8 +86,16 @@ public class EleccionesTest {
 
         Assert.assertArrayEquals(listasTest.toArray(), eleccion2019.getListas().toArray());
         Assert.assertEquals(3, eleccion2019.getCantidadListas());
+
+        this.frenteDespertar.recuperarVigencia();
+        this.frenteDespertar.presentarListaAEleccion(eleccion2019, sesenta);
+
+        listasTest.add(sesenta);
+        Assert.assertArrayEquals(listasTest.toArray(), eleccion2019.getListas().toArray());
+        Assert.assertEquals(4, eleccion2019.getCantidadListas());
     }
 
+    //Test segunda y tercera iteracion
     @Test
     public void personasVotanTest(){
         this.mMacri.postularseA(Cargo.PRESIDENTE, cien);
@@ -122,10 +134,5 @@ public class EleccionesTest {
         Assert.assertEquals(3, juntosPorElCambio.getCantidadVotos(eleccion2019));
         Assert.assertEquals(3, frenteDeTodos.getCantidadVotos(eleccion2019));
         Assert.assertEquals(0, frenteDeIzquierda.getCantidadVotos(eleccion2019));
-    }
-
-    @Test
-    public void entidadesPoliticasTest(){
-
     }
 }

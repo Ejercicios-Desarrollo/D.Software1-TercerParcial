@@ -10,8 +10,8 @@ public class Postulante {
     }
 
     public void postularseA(Cargo cargo, Lista lista){
-        this.cargo = cargo;
         lista.agregarPostulante(this);
+        this.cargo = cargo;
         this.numeroLista = lista.getNumero();
     }
 

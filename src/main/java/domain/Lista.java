@@ -40,7 +40,7 @@ public class Lista {
         return this.entidadPolitica;
     }
 
-    public void sumarVotosListaEntera(){
+    public void sumarVotosListaCompleta(){
         this.postulantes.stream().forEach(p -> p.sumarVoto());
     }
 
@@ -59,10 +59,4 @@ public class Lista {
                 .filter(p -> p.getCargo() == postulante.getCargo())
                 .mapToInt(p -> p.getVotos()).sum();
     }
-
-
-
-
-
-
 }

@@ -1,18 +1,28 @@
 package domain;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class Persona {
-    private int edad;
+    private String fechaDeNacimiento;
     private EstadoVoto estadoVoto;
 
-    public Persona(int edad){
-        this.edad = edad;
+    public Persona(String fechaDeNacimiento){
+        this.fechaDeNacimiento = fechaDeNacimiento;
         this.estadoVoto = new VotoPendiente();
     }
 
     public int getEdad() {
-        return edad;
+        return calcularEdad(fechaDeNacimiento);
+    }
+
+    public int calcularEdad(String fechaDeNacimiento) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+        LocalDate fecha = LocalDate.parse(fechaDeNacimiento, formatter);
+        LocalDate fechaDeHoy = LocalDate.now();
+        return Period.between(fecha, fechaDeHoy).getYears();
     }
 
     public boolean votaste(){

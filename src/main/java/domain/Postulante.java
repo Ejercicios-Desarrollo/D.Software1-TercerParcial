@@ -1,22 +1,30 @@
 package domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Postulante {
     private Cargo cargo;
     private int votos;
-    private int numeroLista;
+    private List<Lista> listas;
 
     public Postulante(){
         this.votos = 0;
+        this.listas = new ArrayList<>();
     }
 
     public void postularseA(Cargo cargo, Lista lista){
         lista.agregarPostulante(this);
         this.cargo = cargo;
-        this.numeroLista = lista.getNumero();
+        this.listas.add(lista);
     }
 
     public int getNumeroLista() {
-        return numeroLista;
+        return getListaActual().getNumero();
+    }
+
+    public Lista getListaActual(){
+        return listas.get(listas.size()-1);
     }
 
     public Cargo getCargo() {

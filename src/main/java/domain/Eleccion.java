@@ -5,8 +5,12 @@ import java.util.List;
 
 public class Eleccion {
     private List<Lista> listas;
+    private int anio;
+    private List<Cargo> cargosAVotar;
 
-    public Eleccion(){
+    public Eleccion(int anio, List<Cargo> cargos){
+        this.anio = anio;
+        this.cargosAVotar = cargos;
         this.listas = new ArrayList<>();
     }
 

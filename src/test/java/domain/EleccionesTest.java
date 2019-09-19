@@ -5,7 +5,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class EleccionesTest {
@@ -26,11 +28,14 @@ public class EleccionesTest {
     private Postulante mVidal;
     private Postulante aFernandez;
     private Postulante aKicillof;
+    private List<Cargo> cargos;
 
 
     @Before
     public void init(){
-        this.eleccion2019 = new Eleccion();
+        this.cargos = new ArrayList<>();
+        Collections.addAll(cargos, Cargo.PRESIDENTE, Cargo.VICEPRESIDENTE, Cargo.GOBERNADOR, Cargo.SENADOR, Cargo.DIPUTADO);
+        this.eleccion2019 = new Eleccion(2019, cargos);
         this.pro = new PartidoPolitico("Pro");
         this.ucr = new PartidoPolitico("UCR");
         this.unidadCiudadana = new PartidoPolitico("Unidad Ciudadana");
@@ -108,20 +113,20 @@ public class EleccionesTest {
         this.frenteDeTodos.presentarListaAEleccion(eleccion2019, veinte);
         this.frenteDeIzquierda.recuperarVigencia();
 
-        Persona persona1 = new Persona(16);
+        Persona persona1 = new Persona("20/01/2003");
         Assert.assertEquals(false, persona1.votaste());
         persona1.emitirVoto(veinte, eleccion2019);
         Assert.assertEquals(true, persona1.votaste());
 
-        Persona persona2 = new Persona(15);
+        Persona persona2 = new Persona("21/09/2004");
         persona2.emitirVoto(veinte, eleccion2019);
         Assert.assertEquals(false, persona2.votaste());
 
-        Persona persona3 = new Persona(20);
+        Persona persona3 = new Persona("22/04/1999");
         persona3.emitirVoto(cien, eleccion2019);
         persona3.emitirVoto(cien, eleccion2019);
 
-        Persona persona4 = new Persona(21);
+        Persona persona4 = new Persona("10/06/1998");
         List<Postulante> listaTest = new ArrayList<>();
         listaTest.add(mMacri);
         listaTest.add(aKicillof);
